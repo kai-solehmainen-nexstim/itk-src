@@ -1,0 +1,159 @@
+{
+  "version": 4,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 23,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "MSVC142_X64",
+      "displayName": "MSVC142_X64",
+      "description": "Visual Studio 16 2019 64-bit build. Copied from the magnes and /GL or /LTCG flags were removed for allowing to use binaries with different compiler versions. Also /SUBSYSTEM:WINDOWS was replaced with the /SUBSYSTEM:CONSOLE.",
+      "generator": "Visual Studio 16 2019",
+      "architecture": "x64",
+      "cacheVariables": {
+        "BUILD_EXAMPLES": {
+          "type": "BOOL",
+          "value": "FALSE"
+        },
+        "BUILD_TESTING": {
+          "type": "BOOL",
+          "value": "FALSE"
+        },
+        "BUILD_SHARED_LIBS": {
+          "type": "BOOL",
+          "value": "FALSE"
+        },
+        "BUILD_STATIC_LIBS": {
+          "type": "BOOL",
+          "value": "TRUE"
+        },
+        "CMAKE_CONFIGURATION_TYPES": {
+          "type": "STRING",
+          "value": "Debug;UsableDebug;Release;MinSizeRel;RelWithDebInfo"
+        },
+        "CMAKE_CXX_FLAGS": {
+          "type": "STRING",
+          "value": "/Zi /MP /W3 /Gy /Zc:wchar_t /Gm- /fp:precise /errorReport:none /GF /WX- /Zc:forScope /Gd /EHa /nologo /DNOMINMAX /DNO_WARN_MBCS_MFC_DEPRECATION /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_WARNINGS /DWIN32 /D_MBCS /DWINVER=0x0A00 /Zi /DQT_MESSAGELOGCONTEXT"
+        },
+        "CMAKE_CXX_FLAGS_DEBUG": {
+          "type": "STRING",
+          "value": "/MDd /RTCsu /Od /Ob0 /GS /D_DEBUG"
+        },
+        "CMAKE_CXX_FLAGS_USABLEDEBUG": {
+          "type": "STRING",
+          "value": "/MD /Od /Ob1 /Oi /GS /DNDEBUG /DQT_FORCE_ASSERTS"
+        },
+        "CMAKE_CXX_FLAGS_MINSIZEREL": {
+          "type": "STRING",
+          "value": "/MD /O1 /Os /Oy /Ob2 /Gs /DNDEBUG /Zi"
+        },
+        "CMAKE_CXX_FLAGS_RELEASE": {
+          "type": "STRING",
+          "value": "/MD /O2 /Oi /Ot /Oy /Ob2 /Gs /DNDEBUG /Zi"
+        },
+        "CMAKE_CXX_FLAGS_RELWITHDEBINFO": {
+          "type": "STRING",
+          "value": "/MD /O2 /Oi /Ot /Oy /Ob2 /Gs /DNDEBUG /Zi"
+        },
+        "CMAKE_C_FLAGS": {
+          "type": "STRING",
+          "value": "/Zi /MP /W3 /GS /Gy /Zc:wchar_t /Gm- /fp:precise /errorReport:none /GF /WX- /Zc:forScope /Gd /EHa /nologo /DNOMINMAX /DNO_WARN_MBCS_MFC_DEPRECATION /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_WARNINGS /DWIN32 /D_MBCS /DWINVER=0x0A00"
+        },
+        "CMAKE_C_FLAGS_DEBUG": {
+          "type": "STRING",
+          "value": "/MDd /RTCsu /Od /Ob0 /D_DEBUG"
+        },
+        "CMAKE_C_FLAGS_USABLEDEBUG": {
+          "type": "STRING",
+          "value": "/MD /Od /Ob1 /Oi /GS /DNDEBUG"
+        },
+        "CMAKE_C_FLAGS_MINSIZEREL": {
+          "type": "STRING",
+          "value": "/MD /O1 /Os /Oy /Ob2 /Gs /DNDEBUG /Zi"
+        },
+        "CMAKE_C_FLAGS_RELEASE": {
+          "type": "STRING",
+          "value": "/MD /O2 /Oi /Ot /Oy /Ob2 /Gs /DNDEBUG /Zi"
+        },
+        "CMAKE_C_FLAGS_RELWITHDEBINFO": {
+          "type": "STRING",
+          "value": "/MD /O2 /Oi /Ot /Oy /Ob2 /Gs /DNDEBUG /Zi"
+        },
+        "CMAKE_EXE_LINKER_FLAGS": {
+          "type": "STRING",
+          "value": "/MANIFEST /NXCOMPAT /DYNAMICBASE /LARGEADDRESSAWARE /MACHINE:X64 /ERRORREPORT:NONE /NOLOGO /SECTION:.rsrc,rw /TLBID:1 /NODEFAULTLIB:libcmt.lib"
+        },
+        "CMAKE_EXE_LINKER_FLAGS_DEBUG": {
+          "type": "STRING",
+          "value": "/INCREMENTAL /DEBUG"
+        },
+        "CMAKE_EXE_LINKER_FLAGS_USABLEDEBUG": {
+          "type": "STRING",
+          "value": "/INCREMENTAL /DEBUG"
+        },
+        "CMAKE_EXE_LINKER_FLAGS_MINSIZEREL": {
+          "type": "STRING",
+          "value": "/INCREMENTAL:NO /DEBUG /OPT:REF /OPT:ICF"
+        },
+        "CMAKE_EXE_LINKER_FLAGS_RELEASE": {
+          "type": "STRING",
+          "value": "/INCREMENTAL:NO /DEBUG /OPT:REF /OPT:ICF"
+        },
+        "CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO": {
+          "type": "STRING",
+          "value": "/INCREMENTAL:NO /DEBUG /OPT:REF /OPT:ICF"
+        },
+        "CMAKE_STATIC_LINKER_FLAGS": {
+          "type": "STRING",
+          "value": "/machine:x64 /NOLOGO /NODEFAULTLIB:libcmt.lib"
+        },
+        "CMAKE_STATIC_LINKER_FLAGS_DEBUG": {
+          "type": "STRING",
+          "value": ""
+        },
+        "CMAKE_STATIC_LINKER_FLAGS_USABLEDEBUG": {
+          "type": "STRING",
+          "value": ""
+        },
+        "CMAKE_STATIC_LINKER_FLAGS_MINSIZEREL": {
+          "type": "STRING",
+          "value": ""
+        },
+        "CMAKE_STATIC_LINKER_FLAGS_RELEASE": {
+          "type": "STRING",
+          "value": ""
+        },
+        "CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO": {
+          "type": "STRING",
+          "value": ""
+        },
+        "CMAKE_SHARED_LINKER_FLAGS": {
+          "type": "STRING",
+          "value": "/MACHINE:X64 /LARGEADDRESSAWARE /NOLOGO /DLL /MANIFEST /NXCOMPAT /DYNAMICBASE /LARGEADDRESSAWARE /SUBSYSTEM:CONSOLE /ERRORREPORT:NONE /NOLOGO /TLBID:1 /NODEFAULTLIB:libcmt.lib"
+        },
+        "CMAKE_SHARED_LINKER_FLAGS_DEBUG": {
+          "type": "STRING",
+          "value": "/INCREMENTAL /DEBUG"
+        },
+        "CMAKE_SHARED_LINKER_FLAGS_USABLEDEBUG": {
+          "type": "STRING",
+          "value": "/INCREMENTAL /DEBUG"
+        },
+        "CMAKE_SHARED_LINKER_FLAGS_MINSIZEREL": {
+          "type": "STRING",
+          "value": "/INCREMENTAL:NO /DEBUG /OPT:REF /OPT:ICF"
+        },
+        "CMAKE_SHARED_LINKER_FLAGS_RELEASE": {
+          "type": "STRING",
+          "value": "/INCREMENTAL:NO /DEBUG /OPT:REF /OPT:ICF"
+        },
+        "CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO": {
+          "type": "STRING",
+          "value": "/INCREMENTAL:NO /DEBUG /OPT:REF /OPT:ICF"
+        }
+      }
+    }
+  ]
+}
