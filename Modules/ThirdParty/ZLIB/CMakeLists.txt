@@ -20,7 +20,7 @@ else()
     ${ITKZLIB_BINARY_DIR}/src/itkzlib-ng
     ${ITKZLIB_SOURCE_DIR}/src
     )
-  set(ITKZLIB_LIBRARIES zlib)
+  set(ITKZLIB_LIBRARIES itkzlib-ng)
 endif()
 
 configure_file(src/itk_zlib.h.in src/itk_zlib.h)

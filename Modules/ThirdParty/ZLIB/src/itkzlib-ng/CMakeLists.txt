@@ -32,7 +32,7 @@ string(REGEX REPLACE ".*#define[ \t]+ZLIBNG_VERSION[ \t]+\"([-0-9A-Za-z.]+)\".*"
 message(STATUS "ZLIB_HEADER_VERSION: ${ZLIB_HEADER_VERSION}")
 message(STATUS "ZLIBNG_HEADER_VERSION: ${ZLIBNG_HEADER_VERSION}")
 
-project(zlib VERSION ${ZLIB_HEADER_VERSION} LANGUAGES C)
+project(itkzlib-ng VERSION ${ZLIB_HEADER_VERSION} LANGUAGES C)
 
 include(CheckTypeSize)
 include(CheckSymbolExists)
@@ -1051,20 +1051,20 @@ if(NOT DEFINED BUILD_SHARED_LIBS OR BUILD_SHARED_LIBS)
 endif()
 
 if(NOT DEFINED BUILD_SHARED_LIBS)
-    itk_module_add_library(zlib SHARED ${ZLIB_ALL_SRCS} ${ZLIB_DLL_SRCS}) # ITK change
+    itk_module_add_library(itkzlib-ng SHARED ${ZLIB_ALL_SRCS} ${ZLIB_DLL_SRCS}) # ITK change
     itk_module_add_library(zlibstatic STATIC ${ZLIB_ALL_SRCS}) # ITK change
 
-    set(ZLIB_INSTALL_LIBRARIES zlib zlibstatic)
+    set(ZLIB_INSTALL_LIBRARIES itkzlib-ng zlibstatic)
 else()
-    itk_module_add_library(zlib ${ZLIB_ALL_SRCS}) # ITK change
+    itk_module_add_library(itkzlib-ng ${ZLIB_ALL_SRCS}) # ITK change
 
     if(BUILD_SHARED_LIBS)
-        target_sources(zlib PRIVATE ${ZLIB_DLL_SRCS})
+        target_sources(itkzlib-ng PRIVATE ${ZLIB_DLL_SRCS})
     else()
-        add_library(zlibstatic ALIAS zlib)
+        add_library(zlibstatic ALIAS itkzlib-ng)
     endif()
 
-    set(ZLIB_INSTALL_LIBRARIES zlib)
+    set(ZLIB_INSTALL_LIBRARIES itkzlib-ng)
 endif()
 
 foreach(ZLIB_INSTALL_LIBRARY ${ZLIB_INSTALL_LIBRARIES})
@@ -1080,7 +1080,7 @@ if(FALSE) # ITK change: don't give custom name to the library
 if(WIN32)
     # Shared library
     if(NOT DEFINED BUILD_SHARED_LIBS OR BUILD_SHARED_LIBS)
-        set_target_properties(zlib PROPERTIES OUTPUT_NAME zlib${SUFFIX})
+        set_target_properties(itkzlib-ng PROPERTIES OUTPUT_NAME itkzlib-ng${SUFFIX})
     endif()
     # Static library
     if(NOT DEFINED BUILD_SHARED_LIBS)
@@ -1091,9 +1091,9 @@ if(WIN32)
         endif()
     elseif(NOT BUILD_SHARED_LIBS)
         if(MSVC)
-            set_target_properties(zlib PROPERTIES OUTPUT_NAME zlibstatic${SUFFIX})
+            set_target_properties(itkzlib-ng PROPERTIES OUTPUT_NAME zlibstatic${SUFFIX})
         else()
-            set_target_properties(zlib PROPERTIES OUTPUT_NAME z${SUFFIX})
+            set_target_properties(itkzlib-ng PROPERTIES OUTPUT_NAME z${SUFFIX})
         endif()
     endif()
 else()
@@ -1103,12 +1103,12 @@ endif()
 endif() # ITK change
 
 if(NOT DEFINED BUILD_SHARED_LIBS OR BUILD_SHARED_LIBS)
-    set_target_properties(zlib PROPERTIES DEFINE_SYMBOL ZLIB_DLL)
+    set_target_properties(itkzlib-ng PROPERTIES DEFINE_SYMBOL ZLIB_DLL)
 
     if(ZLIB_COMPAT)
-        set_target_properties(zlib PROPERTIES SOVERSION 1)
+        set_target_properties(itkzlib-ng PROPERTIES SOVERSION 1)
     else()
-        set_target_properties(zlib PROPERTIES SOVERSION 2)
+        set_target_properties(itkzlib-ng PROPERTIES SOVERSION 2)
     endif()
 
     if(NOT CYGWIN)
@@ -1119,19 +1119,19 @@ if(NOT DEFINED BUILD_SHARED_LIBS OR BUILD_SHARED_LIBS)
         #
         # This has no effect with MSVC, on that platform the version info for
         # the DLL comes from the resource file win32/zlib1.rc
-        set_target_properties(zlib PROPERTIES VERSION ${ZLIB_FULL_VERSION})
+        set_target_properties(itkzlib-ng PROPERTIES VERSION ${ZLIB_FULL_VERSION})
     endif()
 
     if(UNIX)
         if(HAVE_NO_INTERPOSITION)
-            set_target_properties(zlib PROPERTIES COMPILE_FLAGS "-fno-semantic-interposition")
+            set_target_properties(itkzlib-ng PROPERTIES COMPILE_FLAGS "-fno-semantic-interposition")
         endif()
         if(NOT APPLE)
             if(NOT ZLIB_COMPAT)
                 add_definitions(-DHAVE_SYMVER)
             endif()
-            set_target_properties(zlib PROPERTIES LINK_FLAGS
-                "-Wl,--version-script,\"${CMAKE_CURRENT_SOURCE_DIR}/zlib${SUFFIX}.map\"")
+            set_target_properties(itkzlib-ng PROPERTIES LINK_FLAGS
+                "-Wl,--version-script,\"${CMAKE_CURRENT_SOURCE_DIR}/itkzlib-ng${SUFFIX}.map\"")
         endif()
     endif()
     if(MSYS)
@@ -1140,9 +1140,9 @@ if(NOT DEFINED BUILD_SHARED_LIBS OR BUILD_SHARED_LIBS)
     elseif(WIN32)
         # Creates zlib1.dll when building shared library version
         if(ZLIB_COMPAT)
-            set_target_properties(zlib PROPERTIES SUFFIX "1.dll")
+            set_target_properties(itkzlib-ng PROPERTIES SUFFIX "1.dll")
         else()
-            set_target_properties(zlib PROPERTIES SUFFIX "2.dll")
+            set_target_properties(itkzlib-ng PROPERTIES SUFFIX "2.dll")
         endif()
     endif()
 endif()
@@ -1204,8 +1204,8 @@ if(NOT SKIP_INSTALL_FILES AND NOT SKIP_INSTALL_ALL)
     # Generates ZLIB.cmake in case ZLIB_COMPAT=ON and always exports the CMake target ZLIB::ZLIB
     # In case ZLIB_COMPAT=OFF, the CMake target and file follows zlib-ng naming convention
     if (ZLIB_COMPAT)
-        if (TARGET zlib)
-            set_target_properties(zlib PROPERTIES EXPORT_NAME ZLIB)
+        if (TARGET itkzlib-ng)
+            set_target_properties(itkzlib-ng PROPERTIES EXPORT_NAME ZLIB)
         else()
             set_target_properties(zlibstatic PROPERTIES EXPORT_NAME ZLIB)
         endif()
