@@ -19,19 +19,17 @@ for %%D in (bin, include, lib, share) do (
 echo Building and installing Release configuration ...
 set CONFIG=Release
 cmake --build %BUILDDIR% --target INSTALL --config %CONFIG%
-mkdir %INSTALLDIR%\lib\%CONFIG%
-move /Y %INSTALLDIR%\lib\*.lib %INSTALLDIR%\lib\%CONFIG%
-copy /Y %BUILDDIR%\lib\%CONFIG%\*.pdb %INSTALLDIR%\lib\%CONFIG%
+copy /Y %BUILDDIR%\lib\%CONFIG%\*.pdb %INSTALLDIR%\lib
 
-echo Building and installing other configurations
+echo Building and installing other configurations to own directories ...
 for %%C in (Debug, UsableDebug, MinSizeRel, RelWithDebInfo) do (
-    cmake --build %BUILDDIR% --config %%C
-    mkdir %INSTALLDIR%\lib\%%C
-    copy /Y %BUILDDIR%\lib\%%C\*.lib %INSTALLDIR%\lib\%%C
-    copy /Y %BUILDDIR%\lib\%%C\*.pdb %INSTALLDIR%\lib\%%C
+     cmake --build %BUILDDIR% --config %%C
+     mkdir %INSTALLDIR%\lib\%%C
+     copy /Y %BUILDDIR%\lib\%%C\*.lib %INSTALLDIR%\lib\%%C
+     copy /Y %BUILDDIR%\lib\%%C\*.pdb %INSTALLDIR%\lib\%%C
 )
 
-rem Copying additional files to intallation ...
+echo Copying additional files to intallation ...
 for %%F in (%SOURCEDIR%\LICENSE, %SOURCEDIR%\NOTICE) do (
-    copy /Y %%F %INSTALLDIR%
+     copy /Y %%F %INSTALLDIR%
 )
