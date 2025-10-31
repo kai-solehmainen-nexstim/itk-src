@@ -9,7 +9,7 @@
     {
       "name": "MSVC142_X64",
       "displayName": "MSVC142_X64",
-      "description": "Visual Studio 16 2019 64-bit build. Copied from the magnes and /GL or /LTCG flags were removed for allowing to use binaries with different compiler versions. Also /SUBSYSTEM:WINDOWS was replaced with the /SUBSYSTEM:CONSOLE.",
+      "description": "Visual Studio 16 2019 64-bit build. Copied from the magnes and /GL or /LTCG flags were removed for allowing to use binaries with different compiler versions.",
       "generator": "Visual Studio 16 2019",
       "architecture": "x64",
       "cacheVariables": {
