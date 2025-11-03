@@ -32,7 +32,7 @@ string(REGEX REPLACE ".*#define[ \t]+ZLIBNG_VERSION[ \t]+\"([-0-9A-Za-z.]+)\".*"
 message(STATUS "ZLIB_HEADER_VERSION: ${ZLIB_HEADER_VERSION}")
 message(STATUS "ZLIBNG_HEADER_VERSION: ${ZLIBNG_HEADER_VERSION}")
 
-project(itkzlib-ng VERSION ${ZLIB_HEADER_VERSION} LANGUAGES C)
+project(itkzlib VERSION ${ZLIB_HEADER_VERSION} LANGUAGES C)  # Changed by Nexstim (itkzlib was zlib)
 
 include(CheckTypeSize)
 include(CheckSymbolExists)
@@ -1051,20 +1051,20 @@ if(NOT DEFINED BUILD_SHARED_LIBS OR BUILD_SHARED_LIBS)
 endif()
 
 if(NOT DEFINED BUILD_SHARED_LIBS)
-    itk_module_add_library(itkzlib-ng SHARED ${ZLIB_ALL_SRCS} ${ZLIB_DLL_SRCS}) # ITK change
+    itk_module_add_library(itkzlib SHARED ${ZLIB_ALL_SRCS} ${ZLIB_DLL_SRCS}) # ITK change  # Changed by Nexstim (itkzlib was zlib)
     itk_module_add_library(zlibstatic STATIC ${ZLIB_ALL_SRCS}) # ITK change
 
-    set(ZLIB_INSTALL_LIBRARIES itkzlib-ng zlibstatic)
+    set(ZLIB_INSTALL_LIBRARIES itkzlib zlibstatic)  # Changed by Nexstim (itkzlib was zlib)
 else()
-    itk_module_add_library(itkzlib-ng ${ZLIB_ALL_SRCS}) # ITK change
+    itk_module_add_library(itkzlib ${ZLIB_ALL_SRCS}) # ITK change  # Changed by Nexstim (itkzlib was zlib)
 
     if(BUILD_SHARED_LIBS)
-        target_sources(itkzlib-ng PRIVATE ${ZLIB_DLL_SRCS})
+        target_sources(itkzlib PRIVATE ${ZLIB_DLL_SRCS})  # Changed by Nexstim (itkzlib was zlib)
     else()
-        add_library(zlibstatic ALIAS itkzlib-ng)
+        add_library(zlibstatic ALIAS itkzlib)  # Changed by Nexstim (itkzlib was zlib)
     endif()
 
-    set(ZLIB_INSTALL_LIBRARIES itkzlib-ng)
+    set(ZLIB_INSTALL_LIBRARIES itkzlib)  # Changed by Nexstim (itkzlib was zlib)
 endif()
 
 foreach(ZLIB_INSTALL_LIBRARY ${ZLIB_INSTALL_LIBRARIES})
@@ -1080,7 +1080,7 @@ if(FALSE) # ITK change: don't give custom name to the library
 if(WIN32)
     # Shared library
     if(NOT DEFINED BUILD_SHARED_LIBS OR BUILD_SHARED_LIBS)
-        set_target_properties(itkzlib-ng PROPERTIES OUTPUT_NAME itkzlib-ng${SUFFIX})
+        set_target_properties(itkzlib-ng PROPERTIES OUTPUT_NAME itkzlib${SUFFIX})  # Changed by Nexstim (itkzlib was zlib)
     endif()
     # Static library
     if(NOT DEFINED BUILD_SHARED_LIBS)
@@ -1091,9 +1091,9 @@ if(WIN32)
         endif()
     elseif(NOT BUILD_SHARED_LIBS)
         if(MSVC)
-            set_target_properties(itkzlib-ng PROPERTIES OUTPUT_NAME zlibstatic${SUFFIX})
+            set_target_properties(itkzlib PROPERTIES OUTPUT_NAME zlibstatic${SUFFIX})  # Changed by Nexstim (itkzlib was zlib)
         else()
-            set_target_properties(itkzlib-ng PROPERTIES OUTPUT_NAME z${SUFFIX})
+            set_target_properties(itkzlib PROPERTIES OUTPUT_NAME z${SUFFIX})  # Changed by Nexstim (itkzlib was zlib)
         endif()
     endif()
 else()
@@ -1103,12 +1103,12 @@ endif()
 endif() # ITK change
 
 if(NOT DEFINED BUILD_SHARED_LIBS OR BUILD_SHARED_LIBS)
-    set_target_properties(itkzlib-ng PROPERTIES DEFINE_SYMBOL ZLIB_DLL)
+    set_target_properties(itkzlib PROPERTIES DEFINE_SYMBOL ZLIB_DLL)    # Changed by Nexstim (itkzlib was zlib)
 
     if(ZLIB_COMPAT)
-        set_target_properties(itkzlib-ng PROPERTIES SOVERSION 1)
+        set_target_properties(itkzlib PROPERTIES SOVERSION 1)  # Changed by Nexstim (itkzlib was zlib)
     else()
-        set_target_properties(itkzlib-ng PROPERTIES SOVERSION 2)
+        set_target_properties(itkzlib PROPERTIES SOVERSION 2)  # Changed by Nexstim (itkzlib was zlib)
     endif()
 
     if(NOT CYGWIN)
@@ -1119,19 +1119,19 @@ if(NOT DEFINED BUILD_SHARED_LIBS OR BUILD_SHARED_LIBS)
         #
         # This has no effect with MSVC, on that platform the version info for
         # the DLL comes from the resource file win32/zlib1.rc
-        set_target_properties(itkzlib-ng PROPERTIES VERSION ${ZLIB_FULL_VERSION})
+        set_target_properties(itkzlib PROPERTIES VERSION ${ZLIB_FULL_VERSION})  # Changed by Nexstim (itkzlib was zlib)
     endif()
 
     if(UNIX)
         if(HAVE_NO_INTERPOSITION)
-            set_target_properties(itkzlib-ng PROPERTIES COMPILE_FLAGS "-fno-semantic-interposition")
+            set_target_properties(itkzlib PROPERTIES COMPILE_FLAGS "-fno-semantic-interposition")  # Changed by Nexstim (itkzlib was zlib)
         endif()
         if(NOT APPLE)
             if(NOT ZLIB_COMPAT)
                 add_definitions(-DHAVE_SYMVER)
             endif()
-            set_target_properties(itkzlib-ng PROPERTIES LINK_FLAGS
-                "-Wl,--version-script,\"${CMAKE_CURRENT_SOURCE_DIR}/itkzlib-ng${SUFFIX}.map\"")
+            set_target_properties(itkzlib PROPERTIES LINK_FLAGS  # Changed by Nexstim (itkzlib was zlib)
+                "-Wl,--version-script,\"${CMAKE_CURRENT_SOURCE_DIR}/itkzlib${SUFFIX}.map\"")  # Changed by Nexstim (itkzlib was zlib)
         endif()
     endif()
     if(MSYS)
@@ -1140,9 +1140,9 @@ if(NOT DEFINED BUILD_SHARED_LIBS OR BUILD_SHARED_LIBS)
     elseif(WIN32)
         # Creates zlib1.dll when building shared library version
         if(ZLIB_COMPAT)
-            set_target_properties(itkzlib-ng PROPERTIES SUFFIX "1.dll")
+            set_target_properties(itkzlib PROPERTIES SUFFIX "1.dll")  # Changed by Nexstim (itkzlib was zlib)
         else()
-            set_target_properties(itkzlib-ng PROPERTIES SUFFIX "2.dll")
+            set_target_properties(itkzlib PROPERTIES SUFFIX "2.dll")  # Changed by Nexstim (itkzlib was zlib)
         endif()
     endif()
 endif()
@@ -1204,8 +1204,8 @@ if(NOT SKIP_INSTALL_FILES AND NOT SKIP_INSTALL_ALL)
     # Generates ZLIB.cmake in case ZLIB_COMPAT=ON and always exports the CMake target ZLIB::ZLIB
     # In case ZLIB_COMPAT=OFF, the CMake target and file follows zlib-ng naming convention
     if (ZLIB_COMPAT)
-        if (TARGET itkzlib-ng)
-            set_target_properties(itkzlib-ng PROPERTIES EXPORT_NAME ZLIB)
+        if (TARGET itkzlib)  # Changed by Nexstim (itkzlib was zlib)
+            set_target_properties(itkzlib PROPERTIES EXPORT_NAME ZLIB)  # Changed by Nexstim (itkzlib was zlib)
         else()
             set_target_properties(zlibstatic PROPERTIES EXPORT_NAME ZLIB)
         endif()
