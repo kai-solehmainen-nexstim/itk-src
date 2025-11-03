@@ -8,7 +8,7 @@ rem - [INSTALL_DIR] Target installation directory. This needs to be an absolute 
 rem                 Subdirectories bin, include, lib and share of the [INSTALL_DIR] will be deleted before installation.
 rem.
 rem EXAMPLE:
-rem - Directory structure before the command (C:\builds is an example directory and can be changed):
+rem - Directory structure before the command if C:\builds directory is a root directory:
 rem     C:\builds
 rem     ├───itk-src
 rem.
