@@ -31,7 +31,7 @@
         },
         "CMAKE_CONFIGURATION_TYPES": {
           "type": "STRING",
-          "value": "Debug;UsableDebug;Release;MinSizeRel;RelWithDebInfo"
+          "value": "Debug;UsableDebug;Release"
         },
         "CMAKE_CXX_FLAGS": {
           "type": "STRING",
@@ -45,15 +45,7 @@
           "type": "STRING",
           "value": "/MD /Od /Ob1 /Oi /GS /DNDEBUG /DQT_FORCE_ASSERTS"
         },
-        "CMAKE_CXX_FLAGS_MINSIZEREL": {
-          "type": "STRING",
-          "value": "/MD /O1 /Os /Oy /Ob2 /Gs /DNDEBUG /Zi"
-        },
         "CMAKE_CXX_FLAGS_RELEASE": {
-          "type": "STRING",
-          "value": "/MD /O2 /Oi /Ot /Oy /Ob2 /Gs /DNDEBUG /Zi"
-        },
-        "CMAKE_CXX_FLAGS_RELWITHDEBINFO": {
           "type": "STRING",
           "value": "/MD /O2 /Oi /Ot /Oy /Ob2 /Gs /DNDEBUG /Zi"
         },
@@ -69,15 +61,7 @@
           "type": "STRING",
           "value": "/MD /Od /Ob1 /Oi /GS /DNDEBUG"
         },
-        "CMAKE_C_FLAGS_MINSIZEREL": {
-          "type": "STRING",
-          "value": "/MD /O1 /Os /Oy /Ob2 /Gs /DNDEBUG /Zi"
-        },
         "CMAKE_C_FLAGS_RELEASE": {
-          "type": "STRING",
-          "value": "/MD /O2 /Oi /Ot /Oy /Ob2 /Gs /DNDEBUG /Zi"
-        },
-        "CMAKE_C_FLAGS_RELWITHDEBINFO": {
           "type": "STRING",
           "value": "/MD /O2 /Oi /Ot /Oy /Ob2 /Gs /DNDEBUG /Zi"
         },
@@ -93,15 +77,7 @@
           "type": "STRING",
           "value": "/INCREMENTAL /DEBUG"
         },
-        "CMAKE_EXE_LINKER_FLAGS_MINSIZEREL": {
-          "type": "STRING",
-          "value": "/INCREMENTAL:NO /DEBUG /OPT:REF /OPT:ICF"
-        },
         "CMAKE_EXE_LINKER_FLAGS_RELEASE": {
-          "type": "STRING",
-          "value": "/INCREMENTAL:NO /DEBUG /OPT:REF /OPT:ICF"
-        },
-        "CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO": {
           "type": "STRING",
           "value": "/INCREMENTAL:NO /DEBUG /OPT:REF /OPT:ICF"
         },
@@ -117,15 +93,7 @@
           "type": "STRING",
           "value": ""
         },
-        "CMAKE_STATIC_LINKER_FLAGS_MINSIZEREL": {
-          "type": "STRING",
-          "value": ""
-        },
         "CMAKE_STATIC_LINKER_FLAGS_RELEASE": {
-          "type": "STRING",
-          "value": ""
-        },
-        "CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO": {
           "type": "STRING",
           "value": ""
         },
@@ -141,15 +109,7 @@
           "type": "STRING",
           "value": "/INCREMENTAL /DEBUG"
         },
-        "CMAKE_SHARED_LINKER_FLAGS_MINSIZEREL": {
-          "type": "STRING",
-          "value": "/INCREMENTAL:NO /DEBUG /OPT:REF /OPT:ICF"
-        },
         "CMAKE_SHARED_LINKER_FLAGS_RELEASE": {
-          "type": "STRING",
-          "value": "/INCREMENTAL:NO /DEBUG /OPT:REF /OPT:ICF"
-        },
-        "CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO": {
           "type": "STRING",
           "value": "/INCREMENTAL:NO /DEBUG /OPT:REF /OPT:ICF"
         }
