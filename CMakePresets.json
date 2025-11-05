@@ -33,6 +33,18 @@
           "type": "STRING",
           "value": "Debug;UsableDebug;Release"
         },
+        "ITK_INSTALL_RUNTIME_DIR": {
+          "type": "STRING",
+          "value": "bin/$<CONFIG>"
+        },
+        "ITK_INSTALL_LIBRARY_DIR": {
+          "type": "STRING",
+          "value": "lib/$<CONFIG>"
+        },
+        "ITK_INSTALL_ARCHIVE_DIR": {
+          "type": "STRING",
+          "value": "lib/$<CONFIG>"
+        },
         "CMAKE_CXX_FLAGS": {
           "type": "STRING",
           "value": "/Zi /MP /W3 /Gy /Zc:wchar_t /Gm- /fp:precise /errorReport:none /GF /WX- /Zc:forScope /Gd /EHa /nologo /DNOMINMAX /DNO_WARN_MBCS_MFC_DEPRECATION /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_WARNINGS /DWIN32 /D_MBCS /DWINVER=0x0A00 /Zi /DQT_MESSAGELOGCONTEXT"

@@ -19,9 +19,13 @@ rem - Directory structure after the command:
 rem     C:\builds
 rem     ├───itk
 rem     │   ├───bin
+rem     │   │   ├───Debug
+rem     │   │   ├───Release
+rem     │   │   └───UsableDebug
 rem     │   ├───include
 rem     │   ├───lib
 rem     │   │   ├───Debug
+rem     │   │   ├───Release
 rem     │   │   └───UsableDebug
 rem     │   └───share
 rem     ├───itk-build
@@ -31,28 +35,22 @@ set PRESET=%1
 set SOURCE_DIR=%2
 set BUILD_DIR=%3
 set INSTALL_DIR=%4
-set ADDITIONAL_CONFIGS=Debug, UsableDebug
+set CONFIGS=Release, Debug, UsableDebug
 set ADDITIONAL_FILES=%SOURCE_DIR%\LICENSE, %SOURCE_DIR%\NOTICE
 
 echo Configuring project for all configurations ...
-cmake --preset %PRESET% -B %BUILD_DIR% -S %SOURCE_DIR% --install-prefix %INSTALL_DIR%
+cmake --preset %PRESET% -S %SOURCE_DIR% -B %BUILD_DIR% --install-prefix %INSTALL_DIR%
 
 echo Cleaning ...
 setlocal enabledelayedexpansion
 for %%D in (bin, include, lib, share) do (
-    rd /s /q %INSTALL_DIR%\%%D
+     rd /s /q %INSTALL_DIR%\%%D
 )
 
-echo Building and installing Release configuration ...
-set CONFIG=Release
-cmake --build %BUILD_DIR% --target INSTALL --config %CONFIG%
-copy /Y %BUILD_DIR%\lib\%CONFIG%\*.pdb %INSTALL_DIR%\lib
-
-echo Building and installing other configurations to own directories ...
-for %%C in (%ADDITIONAL_CONFIGS%) do (
+echo Building and installing configurations to own directories ...
+for %%C in (%CONFIGS%) do (
      cmake --build %BUILD_DIR% --config %%C
-     mkdir %INSTALL_DIR%\lib\%%C
-     copy /Y %BUILD_DIR%\lib\%%C\*.lib %INSTALL_DIR%\lib\%%C
+     cmake --install %BUILD_DIR% --config %%C --prefix %INSTALL_DIR%
      copy /Y %BUILD_DIR%\lib\%%C\*.pdb %INSTALL_DIR%\lib\%%C
 )
 
